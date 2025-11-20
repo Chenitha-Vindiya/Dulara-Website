@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuntdown</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--navy);
+        }
+
+        /* ==== COUNTDOWN WRAPPER ==== */
+        .countdown-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 640px;
+            padding: 0 16px;
+            z-index: 30;
+        }
+
+        /* ==== MAIN BOX ==== */
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 12px 12px 0 0;
+            padding: 14px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(100, 149, 255, 0.3);
+            position: relative;
+        }
+
+        /* ==== CLOSE BUTTON ==== */
+        .countdown-close-btn {
+            position: absolute;
+            font-size: 1.5rem;
+            top: 0px;
+            right: 8px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+            background: none;
+            border: none;
+        }
+
+        .countdown-close-btn:hover {
+            color: #555;
+        }
+
+        /* ==== TIME CONTAINER ==== */
+        .time-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* ==== TIME BLOCK ==== */
+        .time-block {
+            text-align: center;
+            background: linear-gradient(to bottom right, #f0fcff, #e6f4ff);
+            border: 1px solid #d4eeff;
+            border-radius: 10px;
+            padding: 8px 10px;
+            min-width: 55px;
+            transition: transform 0.15s ease;
+        }
+
+        .time-block:hover {
+            transform: translateY(-2px);
+        }
+
+        /* NUMBER */
+        .time-block .num {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        /* LABEL */
+        .time-block .label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #666;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* Pulse animation for seconds */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.65;
+                transform: scale(1.05);
+            }
+        }
+
+        .time-block.pulse .num {
+            animation: pulse 1s infinite;
+        }
+
+        /* ==== RESPONSIVE ==== */
+        @media (min-width: 1024px) {
+            .countdown-box {
+                padding: 20px 24px;
+            }
+
+            .time-block {
+                padding: 10px 14px;
+                min-width: 65px;
+            }
+
+            .time-block .num {
+                font-size: 1.7rem;
+            }
+
+            .time-block .label {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="countdown-wrapper">
+        <div class="countdown-box">
+            <button class="countdown-close-btn" title="Close countdown">×</button>
+
+            <div class="flex items-center justify-between"
+                style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h3 style="font-size:14px; font-weight:bold; color:#333; margin:0;">2025 Ordinary Level Exams Paper
+                        01</h3>
+                    <p style="font-size:10px; color:#777; margin:0;">Feb 18, 01:00 PM</p>
+                </div>
+
+                <div class="time-container">
+
+                    <div class="time-block">
+                        <div class="num">10</div>
+                        <div class="label">Day</div>
+                    </div>
+
+                    <div class="time-block">
+                        <div class="num">13</div>
+                        <div class="label">Hou</div>
+                    </div>
+
+                    <div class="time-block">
+                        <div class="num">34</div>
+                        <div class="label">Min</div>
+                    </div>
+
+                    <div class="time-block pulse">
+                        <div class="num">48</div>
+                        <div class="label">Sec</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==== USER SET TARGET DATE ====
+        // Format: "YYYY-MM-DD HH:MM:SS"
+        const targetDate = new Date("2026-02-18 13:00:00").getTime();
+
+        // ==== SELECT ELEMENTS ====
+        const daysEl = document.querySelector(".time-block .num:nth-child(1)");
+        const hoursEl = document.querySelectorAll(".time-block .num")[1];
+        const minutesEl = document.querySelectorAll(".time-block .num")[2];
+        const secondsEl = document.querySelectorAll(".time-block .num")[3];
+
+        const wrapper = document.querySelector(".countdown-wrapper");
+        const closeBtn = document.querySelector(".countdown-close-btn");
+
+        // ==== COUNTDOWN FUNCTION ====
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                daysEl.innerText = "0";
+                hoursEl.innerText = "0";
+                minutesEl.innerText = "0";
+                secondsEl.innerText = "0";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            daysEl.innerText = days;
+            hoursEl.innerText = hours;
+            minutesEl.innerText = minutes;
+            secondsEl.innerText = seconds;
+        }
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ==== CLOSE BUTTON FUNCTION ====
+        closeBtn.addEventListener("click", () => {
+            wrapper.style.transition = "0.4s ease";
+            wrapper.style.opacity = "0";
+            wrapper.style.transform = "translate(-50%, 20px)";
+            setTimeout(() => wrapper.style.display = "none", 400);
+        });
+
+    </script>
+
+</body>
+
+</html>

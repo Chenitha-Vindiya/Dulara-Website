@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.floating-widget>li>a figure,
+.floating-widget>li>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.floating-widget {
+    position: fixed;
+    top: 35%;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    width: auto;
+    padding: 3px 0 3px 5px;
+    height: 265px;
+}
+
+.floating-widget>li {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.floating-widget>li>a {
+    justify-content: flex-start;
+    height: 50px;
+    width: 50px;
+    background: var(--muted);
+    box-shadow: 0 4px 6px 0 rgba(50, 50, 93, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    font-weight: 600;
+}
+
+.floating-widget>li>a:hover {
+    color: var(--navy);
+}
+
+.floating-widget>li>a::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--accent);
+    width: 60%;
+    margin: auto;
+}
+
+.floating-widget>li:last-child a::after {
+    opacity: 0;
+}
+
+
+.floating-widget>li>a figure {
+    min-width: 50px;
+    height: 50px;
+}
+
+.floating-widget>li>a span {
+    white-space: nowrap;
+    letter-spacing: 0.12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.floating-widget>li:hover>a {
+    width: 200px;
+    justify-content: flex-start;
+    padding-left: 18px;
+    opacity: 1;
+    background: var(--yellow);
+    border-radius: 0 4px 4px 0;
+}
+
+.floating-widget>li:hover>a::after {
+    opacity: 0;
+}
+
+.floating-widget>li:first-child a {
+    border-radius: 4px 4px 0 0;
+}
+
+.floating-widget>li:last-child a {
+    margin-bottom: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.floating-widget li svg {
+    width: 16px;
+    fill: #101820;
+}
+
+@media (max-width: 767px) {
+    .floating-widget {
+        position: fixed;
+        top: 35%;
+        left: 0;
+    }
+}

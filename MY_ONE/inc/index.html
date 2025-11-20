@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Learn | Future Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS STYLES */
+        :root {
+            --dark-bg: #030a16;
+            --accent-blue: #00eaff;
+            --text-light: #e0f7fa;
+            --border-glow: rgba(0, 234, 255, 0.4);
+            --secondary-glow: rgba(135, 206, 250, 0.3); /* Lighter blue for subtle contrast */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Container for Centering Content --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(3, 10, 22, 0.8);
+            backdrop-filter: blur(5px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-shadow: 0 0 8px var(--border-glow);
+        }
+
+        .nav-links {
+            margin-left: 20%;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1em;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--border-glow);
+        }
+
+        .login-btn {
+            padding: 8px 25px;
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 0 10px var(--border-glow);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; 
+            
+            /* Placeholder for the main image (student/teacher with futuristic tech background) */
+            background: 
+                linear-gradient(to right, rgba(3, 10, 22, 1) 40%, rgba(3, 10, 22, 0.5) 100%),
+                url('https://via.placeholder.com/1600x900/030a16/00eaff?text=FUTURISTIC+STUDENT+DEMO+PERSON') no-repeat center center/cover;
+            
+            border-bottom: 2px solid var(--border-glow);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            padding-left: 5%; 
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 234, 255, 0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #b3e5fc;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            background-color: var(--accent-blue);
+            border: none;
+            color: var(--dark-bg);
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px var(--accent-blue);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--accent-blue);
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--border-glow);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(0, 234, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-glow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: default;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--border-glow);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5em;
+            display: block;
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            font-size: 0.9em;
+            color: #b3e5fc;
+        }
+
+
+        /* --- Footer --- */
+        .footer {
+            padding: 30px 5%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .footer-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9em;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--accent-blue);
+        }
+
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.8em;
+            color: #90a4ae;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-links {
+                margin-left: 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                position: static;
+                padding-top: 40px; 
+            }
+            .nav-links {
+                display: none; 
+            }
+
+            .hero-section {
+                text-align: center;
+                min-height: 80vh;
+                background: linear-gradient(to bottom, rgba(3, 10, 22, 0.5), rgba(3, 10, 22, 1)),
+                            url('https://via.placeholder.com/768x1000/030a16/00eaff?text=FUTURISTIC+STUDENT+DEMO+PERSON') no-repeat center top/cover;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding-left: 0;
+                margin: 0 auto;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">► QUANTUM LEARN</div>
+        <nav class="nav-links">
+            <a href="#">Courses</a>
+            <a href="#">Tutors</a>
+            <a href="#">Pricing</a>
+            <a href="#">Enroll Now</a>
+        </nav>
+        <button class="login-btn">Student Login</button>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>ELEVATE YOUR KNOWLEDGE. CODE YOUR FUTURE.</h1>
+            <p>Access personalized, adaptive learning with certified tutors and advanced digital tools. Get ahead in STEM and beyond.</p>
+            <button class="cta-btn">EXPLORE COURSE CATALOG</button>
+        </div>
+    </main>
+
+    <section class="features container">
+        <h2>Our Futuristic Learning Edge</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="icon">📊</span>
+                <h3>Adaptive Curriculum</h3>
+                <p>Content that adjusts in real-time to your student's learning pace and weak areas.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">⭐</span>
+                <h3>Master Tutors</h3>
+                <p>One-on-one sessions with specialists in Maths, Physics, Coding, and Language Arts.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🌐</span>
+                <h3>Global Access</h3>
+                <p>24/7 learning resources and classes accessible from any device, anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🏆</span>
+                <h3>Gamified Progress</h3>
+                <p>Motivate students with achievements, leaderboards, and interactive simulations.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <a href="#">Parent Portal</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Support</a>
+        </div>
+        <p>© 2025 Quantum Learn. All Rights Reserved. Education Redefined.</p>
+    </footer>
+
+</body>
+</html>

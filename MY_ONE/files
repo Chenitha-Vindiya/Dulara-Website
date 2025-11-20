@@ -1,0 +1,51 @@
+tuition-site/
+│
+├── 📄 index.php                 → Homepage (public)
+├── 📄 about.php                 → About the teacher
+├── 📄 updates.php               → Announcements / news
+├── 📄 join.php                  → How to join / guidelines
+├── 📄 modules.php               → All available modules
+├── 📄 login.php                 → Login page
+├── 📄 register.php              → Registration page
+├── 📄 logout.php                → Destroys session
+│
+├── 📁 inc/                      → PHP includes (reusable backend files)
+│   ├── db.php                   → PDO MySQL connection
+│   ├── auth.php                 → Session & user role handling
+│   ├── header.php               → Common header/nav layout
+│   ├── footer.php               → Common footer layout
+│   └── functions.php            → Helper functions (format dates, validate URLs, etc.)
+│
+├── 📁 student/                  → Student dashboard section
+│   ├── dashboard.php            → Student home/profile
+│   ├── profile.php              → Edit profile
+│   ├── purchases.php            → List of purchased modules
+│   ├── view_module.php          → Watch lessons (YouTube unlisted)
+│   └── upload_slip.php          → Upload cash deposit slip
+│
+├── 📁 admin/                    → Admin control panel
+│   ├── dashboard.php            → Admin home
+│   ├── modules.php              → Add / edit / deactivate modules
+│   ├── lessons.php              → Manage lessons for modules
+│   ├── verify_slips.php         → Verify uploaded bank slips
+│   ├── students.php             → View / manage registered students
+│   └── announcements.php        → Post class updates / news
+│
+├── 📁 assets/                   → Frontend static files
+│   ├── 📁 css/
+│   │   └── style.css            → Main responsive stylesheet
+│   ├── 📁 js/
+│   │   └── app.js               → JS for menu, validation, etc.
+│   └── 📁 images/
+│       ├── logo.png
+│       └── classroom-bg.jpg
+│
+├── 📁 uploads/                  → User file uploads (bank slips, etc.)
+│   ├── slips/                   → Uploaded deposit slips
+│   └── .htaccess                → Protect direct access to this folder
+│
+├── 📁 sql/                      → SQL schema & data
+│   └── schema.sql               → All CREATE TABLE statements
+│
+└── 📁 config/ (optional)        → Environment-specific configs
+    └── config.php               → Constants for database credentials, site name, etc.

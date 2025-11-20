@@ -1,0 +1,217 @@
+Hero Section
+.hero-overlay {
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+.hero-content {
+    margin: 40px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    position: absolute;
+    text-align: center;
+    transition: transform 2s ease;
+
+}
+
+/* Active states */
+.move-left {
+    transform: translateX(-50%);
+}
+
+.disappearBtn {
+    opacity: 0;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #0A2A4A;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 1.5s ease;
+}
+
+.btn-primary:hover {
+    background: #0A2A6F;
+    transform: scale(0.98);
+}
+
+.btn-primary:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 600px) {
+    .hero-content {
+        padding: 15px 20px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero-content button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+.form-box h2 {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none !important;
+    border-radius: 5px;
+    background: #444;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+    /* Prevents input fields from exceeding the container */
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+input:focus {
+    outline: none;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 400px;
+    background: radial-gradient(circle at center, #0A2A6F33, #0A2A6F99);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 25x #000, -5px -5x 25px #fff;
+    border: 2px solid #0e64c7;
+    backdrop-filter: blur(10px);
+    vertical-align: middle;
+
+    opacity: 0;
+    transform: translate(0%, 0%);
+    transition: transform 2s ease, opacity 2.5s ease;
+    /* prevent clicks while hidden  */
+    pointer-events: none;
+}
+
+.form-active {
+    opacity: 1;
+    transform: translate(50%, 0%);
+    /* allow clicks once visible */
+    pointer-events: auto;
+}
+
+.register-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s ease-in-out;
+}
+
+.hero-overlay .register-container {
+    /* position: absolute; */
+    width: 100%;
+    max-width: 500px;
+    background: radial-gradient(circle at center, #0A2A6F33, #0A2A6F99);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 25x #000, -5px -5x 25px #fff;
+    border: 2px solid #0e64c7;
+    backdrop-filter: blur(10px);
+    vertical-align: middle;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translate(130%, 0%);
+    transition: transform 1s ease, opacity 2.5s ease;
+    /* prevent clicks while hidden  */
+    pointer-events: none;
+}
+
+.show {
+    opacity: 1;
+    transform: translate(0%, 0%);
+    /* allow clicks once visible */
+    pointer-events: auto;
+}
+
+select {
+    width: 100px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+option {
+    background-color: #ffffff;
+    /* Option background */
+    color: #000000;
+    /* Option text color */
+}
+
+.register-btn {
+    background-color: #001f3f;
+    /* Navy blue */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #003366;
+    /* Slightly lighter navy on hover */
+}
+
+.name {
+    display: flex;
+    gap: 10px;
+    margin: 0px 22.5px 0px 22.5px;
+}
